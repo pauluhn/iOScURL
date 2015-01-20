@@ -17,4 +17,5 @@
 @property (nonatomic) int videoRtcpPort;
 @property (nonatomic) BOOL running; // flag
 - (void)start; // must set url and config before calling
+- (void)stop;
 @end

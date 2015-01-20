@@ -276,8 +276,27 @@ static void get_media_control_attribute(const char *sdp_filename,
     free(sdp_filename);
 }
 
+- (void)stop
+{
+    if (_running) {
+        _running = NO;
+        
+        /* teardown session */
+        rtsp_teardown(_curl, _uri);
+        
+        /* cleanup */
+        curl_easy_cleanup(_curl);
+        _curl = NULL;
+
+        curl_global_cleanup();
+    }
+}
+
 - (void)dealloc
 {
+    if (_running) {
+        [self stop];
+    }
     free(_uri);
 }
 
