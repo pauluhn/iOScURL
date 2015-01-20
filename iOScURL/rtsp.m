@@ -195,6 +195,8 @@ static void get_media_control_attribute(const char *sdp_filename,
     NSAssert(_url != nil, @"url must be set first!");
     NSAssert(_config != nil, @"config must be set first!");
     
+    const char *audioTransport = "RTP/AVP;unicast;client_port=5000-5001;mode=receive";
+    const char *videoTransport = "RTP/AVP;unicast;client_port=5002-5003;mode=receive";
     const char *range = "0.000-";
 
     printf("\nRTSP request %s\n", VERSION_STR);
@@ -237,8 +239,26 @@ static void get_media_control_attribute(const char *sdp_filename,
             rtsp_announce(_curl, _uri, sdp_filename, sdp_filesize);
             
             /* setup audio */
+            sprintf(_uri, "%s/%s", url, "trackID=0");
+            NSString *audio_sdp = [[NSString stringWithUTF8String:sdp_filename] stringByAppendingPathExtension:@"audio"];
+            rtsp_setup2(_curl, _uri, audioTransport, [audio_sdp UTF8String]);
+            NSArray *audio_ports = [self getServerPorts:audio_sdp];
+            if (audio_ports) {
+                //
+            } else {
+                return;
+            }
             
             /* setup video */
+            sprintf(_uri, "%s/%s", url, "trackID=1");
+            NSString *video_sdp = [[NSString stringWithUTF8String:sdp_filename] stringByAppendingPathExtension:@"video"];
+            rtsp_setup2(_curl, _uri, videoTransport, [video_sdp UTF8String]);
+            NSArray *video_ports = [self getServerPorts:video_sdp];
+            if (video_ports) {
+                //
+            } else {
+                return;
+            }
             
             /* start recording media stream */
         }
@@ -246,6 +266,18 @@ static void get_media_control_attribute(const char *sdp_filename,
         fprintf(stderr, "curl_easy_init() failed\n");
     }
     free(sdp_filename);
+}
+
+- (NSArray *)getServerPorts:(NSString *)path
+{
+    NSError *error = nil;
+    NSString *header = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
+    if (error) {
+        return nil;
+    }
+    NSRange range = [header rangeOfString:@"server_port="];
+    NSArray *ports = [[header substringFromIndex:range.location+range.length] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"-\r\n"]];
+    return @[@([ports[0] intValue]), @([ports[1] intValue])];
 }
 
 @end
