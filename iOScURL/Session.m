@@ -12,7 +12,7 @@
 
 @implementation Session
 
-+ (NSString *)getSessionDescription:(NSString *)ip config:(NSData *)config
++ (unsigned long long)getSessionDescription:(NSString *)path ip:(NSString *)ip config:(NSData *)config
 {
     NSString *sessionDescription = [NSString string];
     sessionDescription = [sessionDescription stringByAppendingString:@"v=0\r\n"];
@@ -31,7 +31,21 @@
     sessionDescription = [sessionDescription stringByAppendingString:@"a=control:trackID=0\r\n"];
     sessionDescription = [sessionDescription stringByAppendingString:[H264Stream getSessionDescription:config]];
     sessionDescription = [sessionDescription stringByAppendingString:@"a=control:trackID=1\r\n"];
-    return sessionDescription;
+    
+    NSError *error = nil;
+    [sessionDescription writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&error];
+    if (error) {
+        NSLog(@"%@", error);
+        return 0;
+    }
+    
+    error = nil;
+    NSDictionary *attr = [[NSFileManager defaultManager] attributesOfItemAtPath:path error:&error];
+    if (error) {
+        NSLog(@"%@", error);
+        return 0;
+    }
+    return attr.fileSize;
 }
 
 @end

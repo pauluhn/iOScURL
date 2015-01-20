@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface Session : NSObject
-+ (NSString *)getSessionDescription:(NSString *)ip config:(NSData *)config;
++ (unsigned long long)getSessionDescription:(NSString *)path ip:(NSString *)ip config:(NSData *)config;
 @end
