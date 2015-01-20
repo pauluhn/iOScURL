@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface rtsp : NSObject
-
+- (void)start:(NSString *)rstpUrl; // rtsp://<server>:<port>/<app>/<stream>
 @end

@@ -176,6 +176,59 @@ static void get_media_control_attribute(const char *sdp_filename,
     free(s);
 }
 
+@interface rtsp ()
+{
+    CURL *_curl;
+    char *_uri;
+}
+@end
+
 @implementation rtsp
+
+- (void)start:(NSString *)rstpUrl
+{
+    const char *range = "0.000-";
+
+    printf("\nRTSP request %s\n", VERSION_STR);
+    printf("    Project web site: http://code.google.com/p/rtsprequest/\n");
+    printf("    Requires cURL V7.20 or greater\n\n");
+
+    const char *url = [rstpUrl UTF8String];
+    _uri = malloc(strlen(url) + 32);
+    char *sdp_filename = malloc(strlen(url) + 256);
+    CURLcode res;
+    get_sdp_filename(url, sdp_filename);
+
+    /* initialize curl */
+    res = curl_global_init(CURL_GLOBAL_ALL);
+    if (res == CURLE_OK) {
+        curl_version_info_data *data = curl_version_info(CURLVERSION_NOW);
+        fprintf(stderr, "    cURL V%s loaded\n", data->version);
+    
+        /* initialize this curl session */
+        _curl = curl_easy_init();
+        if (_curl != NULL) {
+            my_curl_easy_setopt(_curl, CURLOPT_VERBOSE, 0L);
+            my_curl_easy_setopt(_curl, CURLOPT_NOPROGRESS, 1L);
+            my_curl_easy_setopt(_curl, CURLOPT_HEADERDATA, stdout);
+            my_curl_easy_setopt(_curl, CURLOPT_URL, url);
+        
+            /* request server options */
+            sprintf(_uri, "%s", url);
+            rtsp_options(_curl, _uri);
+            
+            /* announce */
+            
+            /* setup audio */
+            
+            /* setup video */
+            
+            /* start recording media stream */
+        }
+    } else {
+        fprintf(stderr, "curl_easy_init() failed\n");
+    }
+    free(sdp_filename);
+}
 
 @end
