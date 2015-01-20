@@ -32,6 +32,25 @@ static void rtsp_options(CURL *curl, const char *uri)
     my_curl_easy_perform(curl);
 }
 
+/* send RTSP ANNOUNCE request */
+static void rtsp_announce(CURL *curl, const char *uri, const char *sdp_filename, long sdp_filesize)
+{
+    CURLcode res = CURLE_OK;
+    FILE *sdp_fp = fopen(sdp_filename, "rb");
+    printf("\nRTSP: ANNOUNCE %s\n", uri);
+    if (sdp_fp == NULL) {
+        fprintf(stderr, "Could not open '%s' for reading\n", sdp_filename);
+        return;
+    }
+    my_curl_easy_setopt(curl, CURLOPT_RTSP_STREAM_URI, uri);
+    my_curl_easy_setopt(curl, CURLOPT_RTSP_REQUEST, (long)CURL_RTSPREQ_ANNOUNCE);
+    my_curl_easy_setopt(curl, CURLOPT_UPLOAD, 1L);
+    my_curl_easy_setopt(curl, CURLOPT_READDATA, sdp_fp);
+    my_curl_easy_setopt(curl, CURLOPT_INFILESIZE, sdp_filesize);
+    my_curl_easy_perform(curl);
+    my_curl_easy_setopt(curl, CURLOPT_UPLOAD, 0L);
+    fclose(sdp_fp);
+}
 
 /* send RTSP DESCRIBE request and write sdp response to a file */
 static void rtsp_describe(CURL *curl, const char *uri,
@@ -68,6 +87,29 @@ static void rtsp_setup(CURL *curl, const char *uri, const char *transport)
     my_curl_easy_perform(curl);
 }
 
+/* send RTSP SETUP request, save response header to file */
+static void rtsp_setup2(CURL *curl, const char *uri, const char *transport, const char *filename)
+{
+    CURLcode res = CURLE_OK;
+    FILE *fp = fopen(filename, "wt");
+    printf("\nRTSP: SETUP %s\n", uri);
+    printf("      TRANSPORT %s\n", transport);
+    if (fp == NULL) {
+        fprintf(stderr, "Could not open '%s' for writing\n", filename);
+        fp = stdout;
+    }
+    my_curl_easy_setopt(curl, CURLOPT_WRITEDATA, fp);
+    my_curl_easy_setopt(curl, CURLOPT_RTSP_STREAM_URI, uri);
+    my_curl_easy_setopt(curl, CURLOPT_RTSP_TRANSPORT, transport);
+    my_curl_easy_setopt(curl, CURLOPT_RTSP_REQUEST, (long)CURL_RTSPREQ_SETUP);
+    my_curl_easy_setopt(curl, CURLOPT_HEADER, 1L);
+    my_curl_easy_perform(curl);
+    my_curl_easy_setopt(curl, CURLOPT_WRITEDATA, stdout);
+    my_curl_easy_setopt(curl, CURLOPT_HEADER, 0L);
+    if (fp != stdout) {
+        fclose(fp);
+    }
+}
 
 /* send RTSP PLAY request */
 static void rtsp_play(CURL *curl, const char *uri, const char *range)
@@ -80,6 +122,16 @@ static void rtsp_play(CURL *curl, const char *uri, const char *range)
     my_curl_easy_perform(curl);
 }
 
+/* send RTSP RECORD request */
+static void rtsp_record(CURL *curl, const char *uri, const char *range)
+{
+    CURLcode res = CURLE_OK;
+    printf("\nRTSP: RECORD %s\n", uri);
+    my_curl_easy_setopt(curl, CURLOPT_RTSP_STREAM_URI, uri);
+    my_curl_easy_setopt(curl, CURLOPT_RANGE, range);
+    my_curl_easy_setopt(curl, CURLOPT_RTSP_REQUEST, (long)CURL_RTSPREQ_RECORD);
+    my_curl_easy_perform(curl);
+}
 
 /* send RTSP TEARDOWN request */
 static void rtsp_teardown(CURL *curl, const char *uri)
