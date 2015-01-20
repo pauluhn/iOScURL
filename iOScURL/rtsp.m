@@ -21,6 +21,10 @@ fprintf(stderr, "curl_easy_setopt(%s, %s, %s) failed: %d\n", \
 if ((res = curl_easy_perform((A))) != CURLE_OK) \
 fprintf(stderr, "curl_easy_perform(%s) failed: %d\n", #A, res);
 
+#define my_curl_easy_getinfo(A, B, C) \
+if ((res = curl_easy_getinfo((A), (B), (C))) != CURLE_OK) \
+fprintf(stderr, "curl_easy_getinfo(%s, %s, %s) failed: %d\n", \
+#A, #B, #C, res);
 
 /* send RTSP OPTIONS request */
 static void rtsp_options(CURL *curl, const char *uri)
@@ -216,6 +220,10 @@ static void get_media_control_attribute(const char *sdp_filename,
             /* request server options */
             sprintf(_uri, "%s", url);
             rtsp_options(_curl, _uri);
+            
+            /* ip */
+            char *ip = malloc(32);
+            my_curl_easy_getinfo(_curl, CURLINFO_PRIMARY_IP, &ip);
             
             /* announce */
             
