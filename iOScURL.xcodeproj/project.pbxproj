@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		DAE1E5571A6ECBEB00494EA1 /* rtsp.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE1E5551A6ECBEB00494EA1 /* rtsp.m */; };
+		DAE1E5601A6EDD9E00494EA1 /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE1E55F1A6EDD9E00494EA1 /* Session.m */; };
+		DAE1E5631A6EE16000494EA1 /* AACStream.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE1E5621A6EE16000494EA1 /* AACStream.m */; };
+		DAE1E5661A6EE17400494EA1 /* H264Stream.mm in Sources */ = {isa = PBXBuildFile; fileRef = DAE1E5651A6EE17400494EA1 /* H264Stream.mm */; };
+		DAE1E56B1A6EE83500494EA1 /* NALUnit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DAE1E5691A6EE83500494EA1 /* NALUnit.cpp */; };
 		E01262FA180CB82D00BFA838 /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E01262F9180CB82D00BFA838 /* libcurl.a */; };
 		E0DF7DE61645F9BF005C421F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0DF7DE51645F9BF005C421F /* UIKit.framework */; };
 		E0DF7DE81645F9BF005C421F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0DF7DE71645F9BF005C421F /* Foundation.framework */; };
@@ -31,6 +35,18 @@
 		DAE1E5531A6ECBEB00494EA1 /* rtsp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rtsp.c; sourceTree = "<group>"; };
 		DAE1E5541A6ECBEB00494EA1 /* rtsp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rtsp.h; sourceTree = "<group>"; };
 		DAE1E5551A6ECBEB00494EA1 /* rtsp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = rtsp.m; sourceTree = "<group>"; };
+		DAE1E5581A6EDB3E00494EA1 /* AACStream.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = AACStream.java; sourceTree = "<group>"; };
+		DAE1E5591A6EDB3E00494EA1 /* H264Stream.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = H264Stream.java; sourceTree = "<group>"; };
+		DAE1E55C1A6EDC0D00494EA1 /* Session.java */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.java; path = Session.java; sourceTree = "<group>"; };
+		DAE1E55E1A6EDD9E00494EA1 /* Session.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Session.h; sourceTree = "<group>"; };
+		DAE1E55F1A6EDD9E00494EA1 /* Session.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Session.m; sourceTree = "<group>"; };
+		DAE1E5611A6EE16000494EA1 /* AACStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AACStream.h; sourceTree = "<group>"; };
+		DAE1E5621A6EE16000494EA1 /* AACStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AACStream.m; sourceTree = "<group>"; };
+		DAE1E5641A6EE17400494EA1 /* H264Stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = H264Stream.h; sourceTree = "<group>"; };
+		DAE1E5651A6EE17400494EA1 /* H264Stream.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = H264Stream.mm; sourceTree = "<group>"; };
+		DAE1E5671A6EE5EF00494EA1 /* RTSPClientConnection.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RTSPClientConnection.mm; sourceTree = "<group>"; };
+		DAE1E5691A6EE83500494EA1 /* NALUnit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NALUnit.cpp; sourceTree = "<group>"; };
+		DAE1E56A1A6EE83500494EA1 /* NALUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NALUnit.h; sourceTree = "<group>"; };
 		E01262F9180CB82D00BFA838 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcurl.a; sourceTree = "<group>"; };
 		E0DF7DE11645F9BF005C421F /* iOScURL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOScURL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0DF7DE51645F9BF005C421F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -116,6 +132,18 @@
 				DAE1E5531A6ECBEB00494EA1 /* rtsp.c */,
 				DAE1E5541A6ECBEB00494EA1 /* rtsp.h */,
 				DAE1E5551A6ECBEB00494EA1 /* rtsp.m */,
+				DAE1E55C1A6EDC0D00494EA1 /* Session.java */,
+				DAE1E55E1A6EDD9E00494EA1 /* Session.h */,
+				DAE1E55F1A6EDD9E00494EA1 /* Session.m */,
+				DAE1E5581A6EDB3E00494EA1 /* AACStream.java */,
+				DAE1E5611A6EE16000494EA1 /* AACStream.h */,
+				DAE1E5621A6EE16000494EA1 /* AACStream.m */,
+				DAE1E5591A6EDB3E00494EA1 /* H264Stream.java */,
+				DAE1E5671A6EE5EF00494EA1 /* RTSPClientConnection.mm */,
+				DAE1E5641A6EE17400494EA1 /* H264Stream.h */,
+				DAE1E5651A6EE17400494EA1 /* H264Stream.mm */,
+				DAE1E5691A6EE83500494EA1 /* NALUnit.cpp */,
+				DAE1E56A1A6EE83500494EA1 /* NALUnit.h */,
 				E0DF7DEC1645F9BF005C421F /* Supporting Files */,
 			);
 			path = iOScURL;
@@ -206,9 +234,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAE1E5571A6ECBEB00494EA1 /* rtsp.m in Sources */,
+				DAE1E5661A6EE17400494EA1 /* H264Stream.mm in Sources */,
+				DAE1E5631A6EE16000494EA1 /* AACStream.m in Sources */,
+				DAE1E5601A6EDD9E00494EA1 /* Session.m in Sources */,
 				E0DF7DF21645F9BF005C421F /* main.m in Sources */,
 				E0DF7DF61645F9BF005C421F /* ICAppDelegate.m in Sources */,
 				E0DF7DFF1645F9C0005C421F /* ICViewController.m in Sources */,
+				DAE1E56B1A6EE83500494EA1 /* NALUnit.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
