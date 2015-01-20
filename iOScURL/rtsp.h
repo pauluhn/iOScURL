@@ -9,5 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface rtsp : NSObject
-- (void)start:(NSString *)rstpUrl; // rtsp://<server>:<port>/<app>/<stream>
+@property (nonatomic) NSString *url; // rtsp://<server>:<port>/<app>/<stream>
+@property (nonatomic) NSData *config; // sps/pps
+- (void)start; // must set url and config before calling
 @end

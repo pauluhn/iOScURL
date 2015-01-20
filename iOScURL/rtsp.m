@@ -189,15 +189,18 @@ static void get_media_control_attribute(const char *sdp_filename,
 
 @implementation rtsp
 
-- (void)start:(NSString *)rstpUrl
+- (void)start
 {
+    NSAssert(_url != nil, @"url must be set first!");
+    NSAssert(_config != nil, @"config must be set first!");
+    
     const char *range = "0.000-";
 
     printf("\nRTSP request %s\n", VERSION_STR);
     printf("    Project web site: http://code.google.com/p/rtsprequest/\n");
     printf("    Requires cURL V7.20 or greater\n\n");
 
-    const char *url = [rstpUrl UTF8String];
+    const char *url = [_url UTF8String];
     _uri = malloc(strlen(url) + 32);
     char *sdp_filename = malloc(strlen(url) + 256);
     CURLcode res;
