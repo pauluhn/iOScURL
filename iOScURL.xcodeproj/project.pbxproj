@@ -27,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DAE1E5531A6ECBEB00494EA1 /* rtsp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rtsp.c; sourceTree = "<group>"; };
 		E01262F9180CB82D00BFA838 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcurl.a; sourceTree = "<group>"; };
 		E0DF7DE11645F9BF005C421F /* iOScURL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOScURL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0DF7DE51645F9BF005C421F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -109,6 +110,7 @@
 				E0DF7DFE1645F9C0005C421F /* ICViewController.m */,
 				E0DF7E001645F9C0005C421F /* ICViewController_iPhone.xib */,
 				E0DF7E031645F9C0005C421F /* ICViewController_iPad.xib */,
+				DAE1E5531A6ECBEB00494EA1 /* rtsp.c */,
 				E0DF7DEC1645F9BF005C421F /* Supporting Files */,
 			);
 			path = iOScURL;
