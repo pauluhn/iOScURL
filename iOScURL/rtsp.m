@@ -244,7 +244,8 @@ static void get_media_control_attribute(const char *sdp_filename,
             rtsp_setup2(_curl, _uri, audioTransport, [audio_sdp UTF8String]);
             NSArray *audio_ports = [self getServerPorts:audio_sdp];
             if (audio_ports) {
-                //
+                _audioRtpPort = [audio_ports[0] intValue];
+                _audioRtcpPort = [audio_ports[1] intValue];
             } else {
                 return;
             }
@@ -255,7 +256,8 @@ static void get_media_control_attribute(const char *sdp_filename,
             rtsp_setup2(_curl, _uri, videoTransport, [video_sdp UTF8String]);
             NSArray *video_ports = [self getServerPorts:video_sdp];
             if (video_ports) {
-                //
+                _videoRtpPort = [video_ports[0] intValue];
+                _videoRtcpPort = [video_ports[1] intValue];
             } else {
                 return;
             }
