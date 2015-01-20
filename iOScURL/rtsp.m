@@ -8,6 +8,7 @@
 
 #import "rtsp.h"
 #import "curl/curl.h"
+#import "Session.h"
 
 #define VERSION_STR  "V1.0"
 
@@ -229,6 +230,11 @@ static void get_media_control_attribute(const char *sdp_filename,
             my_curl_easy_getinfo(_curl, CURLINFO_PRIMARY_IP, &ip);
             
             /* announce */
+            long sdp_filesize = [Session getSessionDescription:[NSString stringWithUTF8String:sdp_filename] ip:[NSString stringWithUTF8String:ip] config:_config];
+            if (sdp_filesize == 0) {
+                return;
+            }
+            rtsp_announce(_curl, _uri, sdp_filename, sdp_filesize);
             
             /* setup audio */
             
