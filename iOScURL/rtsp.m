@@ -99,7 +99,9 @@ static void get_sdp_filename(const char *url, char *sdp_filename)
     if (s != NULL) {
         s++;
         if (s[0] != '\0') {
-            sprintf(sdp_filename, "%s.sdp", s);
+            // Add documents path
+            NSString *path = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:[NSString stringWithUTF8String:s]];
+            sprintf(sdp_filename, "%s.sdp", [path UTF8String]);
         }
     }
 }
