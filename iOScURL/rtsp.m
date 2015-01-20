@@ -263,6 +263,8 @@ static void get_media_control_attribute(const char *sdp_filename,
             }
             
             /* start recording media stream */
+            sprintf(_uri, "%s/", url);
+            rtsp_record(_curl, _uri, range);
         }
     } else {
         fprintf(stderr, "curl_easy_init() failed\n");
