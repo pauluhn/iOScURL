@@ -266,6 +266,8 @@ static void get_media_control_attribute(const char *sdp_filename,
             sprintf(_uri, "%s/", url);
             rtsp_record(_curl, _uri, range);
             
+            _running = YES;
+            
             free(ip);
         }
     } else {
