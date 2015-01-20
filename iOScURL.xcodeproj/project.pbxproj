@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DAE1E5571A6ECBEB00494EA1 /* rtsp.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE1E5551A6ECBEB00494EA1 /* rtsp.m */; };
 		E01262FA180CB82D00BFA838 /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E01262F9180CB82D00BFA838 /* libcurl.a */; };
 		E0DF7DE61645F9BF005C421F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0DF7DE51645F9BF005C421F /* UIKit.framework */; };
 		E0DF7DE81645F9BF005C421F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0DF7DE71645F9BF005C421F /* Foundation.framework */; };
@@ -28,6 +29,8 @@
 
 /* Begin PBXFileReference section */
 		DAE1E5531A6ECBEB00494EA1 /* rtsp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rtsp.c; sourceTree = "<group>"; };
+		DAE1E5541A6ECBEB00494EA1 /* rtsp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rtsp.h; sourceTree = "<group>"; };
+		DAE1E5551A6ECBEB00494EA1 /* rtsp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = rtsp.m; sourceTree = "<group>"; };
 		E01262F9180CB82D00BFA838 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcurl.a; sourceTree = "<group>"; };
 		E0DF7DE11645F9BF005C421F /* iOScURL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOScURL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0DF7DE51645F9BF005C421F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -111,6 +114,8 @@
 				E0DF7E001645F9C0005C421F /* ICViewController_iPhone.xib */,
 				E0DF7E031645F9C0005C421F /* ICViewController_iPad.xib */,
 				DAE1E5531A6ECBEB00494EA1 /* rtsp.c */,
+				DAE1E5541A6ECBEB00494EA1 /* rtsp.h */,
+				DAE1E5551A6ECBEB00494EA1 /* rtsp.m */,
 				E0DF7DEC1645F9BF005C421F /* Supporting Files */,
 			);
 			path = iOScURL;
@@ -200,6 +205,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAE1E5571A6ECBEB00494EA1 /* rtsp.m in Sources */,
 				E0DF7DF21645F9BF005C421F /* main.m in Sources */,
 				E0DF7DF61645F9BF005C421F /* ICAppDelegate.m in Sources */,
 				E0DF7DFF1645F9C0005C421F /* ICViewController.m in Sources */,
