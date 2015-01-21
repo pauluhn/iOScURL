@@ -268,8 +268,6 @@ static void get_media_control_attribute(const char *sdp_filename,
             rtsp_record(_curl, _uri, range);
             
             _running = YES;
-            
-            free(ip);
         }
     } else {
         fprintf(stderr, "curl_easy_init() failed\n");
