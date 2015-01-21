@@ -230,9 +230,10 @@ static void get_media_control_attribute(const char *sdp_filename,
             /* ip */
             char *ip = malloc(32);
             my_curl_easy_getinfo(_curl, CURLINFO_PRIMARY_IP, &ip);
+            _ip = [NSString stringWithUTF8String:ip];
             
             /* announce */
-            long sdp_filesize = [Session getSessionDescription:[NSString stringWithUTF8String:sdp_filename] ip:[NSString stringWithUTF8String:ip] config:_config];
+            long sdp_filesize = [Session getSessionDescription:[NSString stringWithUTF8String:sdp_filename] ip:_ip config:_config];
             if (sdp_filesize == 0) {
                 return;
             }

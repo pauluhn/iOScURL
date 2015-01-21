@@ -11,6 +11,7 @@
 @interface rtsp : NSObject
 @property (nonatomic) NSString *url; // rtsp://<server>:<port>/<app>/<stream>
 @property (nonatomic) NSData *config; // sps/pps
+@property (nonatomic) NSString *ip;
 @property (nonatomic) int audioRtpPort;
 @property (nonatomic) int audioRtcpPort;
 @property (nonatomic) int videoRtpPort;
